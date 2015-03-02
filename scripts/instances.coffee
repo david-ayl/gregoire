@@ -7,6 +7,7 @@ Firebase = require("firebase")
 
 module.exports = (robot) ->
   firebaseName = process.env.HUBOT_FIREBASE_NAME
+  commitBaseUrl = process.env.HUBOT_COMMIT_BASE_URL # No trailing slash
   firebaseRef = new Firebase("https://#{firebaseName}.firebaseio.com/")
 
   ref = firebaseRef.child("ayl-instances")
@@ -24,7 +25,7 @@ module.exports = (robot) ->
         # the sha
         # TODO: add a link to the commit on github
         if instance.sha
-          text.push "#{instance.sha.toLowerCase()}"
+          text.push "#{commitBaseUrl}/#{instance.sha.toLowerCase()}"
 
         # the person who requested the deployment
         # TODO: add a link to the user on slack
