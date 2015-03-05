@@ -1,8 +1,16 @@
 # Description:
 #   A way to list the previews and production instances on the AYL network.
 #
+# Dependencies:
+#   Firebase
+#
 # Commands:
-#   hubot instances - List all the instances online.
+#   hubot instances - List all the instances online.#
+#
+# Author:
+#   cbellino
+#
+
 Firebase = require("firebase")
 
 module.exports = (robot) ->
