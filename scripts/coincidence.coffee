@@ -5,8 +5,7 @@
 #   None
 #
 # Commands:
-#   hubot coincidence - Send a cool message in relation with the sentence
-#   `Coincidence ? I think NOT`
+#   hubot coincidence - Send a cool message in relation with the sentence `Coincidence ? I think NOT`
 #
 # Author:
 #   cbellino
