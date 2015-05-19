@@ -34,6 +34,6 @@ module.exports = (robot) ->
 
         if log.changes and log.changes.length > 0
           log.changes.forEach forEachChanges = (change) ->
-            text.push "- #{change} -"
+            text.push "- #{change}\n"
 
         msg.send text.join(" ")
