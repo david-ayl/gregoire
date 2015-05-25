@@ -13,6 +13,7 @@
 #
 
 Firebase = require("firebase")
+moment = require("moment")
 
 module.exports = (robot) ->
   firebaseName = process.env.HUBOT_FIREBASE_NAME
@@ -28,9 +29,21 @@ module.exports = (robot) ->
       for own key, log of logs
         text = []
 
+
         # the title of the change
         if log.title
-          text.push "*#{log.title}* :\n"
+          text.push "*#{log.title}"
+        else
+          text.push "*"
+
+        # the date of the change
+        if log.deployed_at
+          formattedDate = moment.unix(log.deployed_at).format('MMMM DD')
+
+          text.push " (#{formattedDate}):*\n"
+
+        else
+          text.push ":*\n"
 
         if log.changes and log.changes.length > 0
           log.changes.forEach forEachChanges = (change) ->
