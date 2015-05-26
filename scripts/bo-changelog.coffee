@@ -25,10 +25,10 @@ module.exports = (robot) ->
   robot.respond /changelog/i, (msg) ->
     ref.once "value", (snapshot) ->
       logs = snapshot.val()
+      messages = []
 
       for own key, log of logs
         text = []
-
 
         # the title of the change
         if log.title
@@ -38,9 +38,9 @@ module.exports = (robot) ->
 
         # the date of the change
         if log.deployed_at
-          formattedDate = moment.unix(log.deployed_at).format('MMMM DD')
+          formattedDate = moment.unix(log.deployed_at).format('MMMM DD HH:MM')
 
-          text.push " (#{formattedDate}):*\n"
+          text.push "(#{formattedDate}):*\n"
 
         else
           text.push ":*\n"
@@ -49,4 +49,7 @@ module.exports = (robot) ->
           log.changes.forEach forEachChanges = (change) ->
             text.push "- #{change}\n"
 
-        msg.send text.join(" ")
+        messages.push text.join(" ")
+
+      for message in messages.reverse()
+        msg.send message
