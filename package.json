@@ -5,6 +5,7 @@
   "author": "Colin Bellino <bellino.colin@gmail.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
+    "cheerio": "^0.19.0",
     "firebase": "^2.2.1",
     "hubot": "^2.11.1",
     "hubot-diagnostics": "0.0.1",
