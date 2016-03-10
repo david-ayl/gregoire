@@ -15,6 +15,7 @@
     "hubot-heroku-keepalive": "0.0.4",
     "hubot-maps": "git://github.com/wildtree/hubot-maps.git#multibyte",
     "hubot-pugme": "^0.1.0",
+    "hubot-dogeme": "1.0.0",
     "hubot-redis-brain": "0.0.2",
     "hubot-rules": "^0.1.0",
     "hubot-scripts": "^2.5.16",
