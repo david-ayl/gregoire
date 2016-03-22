@@ -20,9 +20,9 @@ USER_AGENT_STRING = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3)
 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2650.0 Safari/537.36'
 GOOGLE_SEARCH_BASE_URL = 'https://www.google.com/search'
 
-generateResponse = (robot, res) ->
+generateResponse = (robot, res, prefix = '') ->
   query = encodeURIComponent(res.match[1])
-  searchUrl = "#{GOOGLE_SEARCH_BASE_URL}?q=#{query}&tbm=isch"
+  searchUrl = "#{GOOGLE_SEARCH_BASE_URL}?q=#{prefix}#{query}&tbm=isch"
 
   phantom.create().then (ph) ->
     ph.createPage().then (page) ->
@@ -30,7 +30,8 @@ generateResponse = (robot, res) ->
         page.open(searchUrl).then (status) ->
           if status == 'success'
             page.evaluate(() ->
-              element = document.querySelector('div#isr_mc div.ivg-i a')
+              elements = document.querySelectorAll('div#isr_mc div.ivg-i a')
+              element = elements[Math.floor(Math.random() * elements.length)]
               ret = undefined
               if element
                 matches = element.getAttribute('href').match(/imgurl=(.*?)&/)
@@ -46,6 +47,10 @@ generateResponse = (robot, res) ->
 
 module.exports = (robot) ->
 
-  robot.respond(/image me (.+)/i, (res) ->
+  robot.respond(/image (.+)/i, (res) ->
     generateResponse(robot, res)
+  )
+
+  robot.respond(/gif (.+)/i, (res) ->
+    generateResponse(robot, res, 'animated gif ')
   )
