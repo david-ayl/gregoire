@@ -29,8 +29,9 @@ githubCommitBaseURL = process.env.HUBOT_COMMIT_BASE_URL # No trailing slash!
 
 # Firebase settings
 firebaseName = process.env.HUBOT_FIREBASE_NAME
+firebaseInstancesNodeName = process.env.HUBOT_FIREBASE_INSTANCES_NODE
 firebaseRef = new Firebase("https://#{firebaseName}.firebaseio.com/")
-firebaseInstancesRef = firebaseRef.child("ayl-instances")
+firebaseInstancesRef = firebaseRef.child(firebaseInstancesNodeName)
 
 # Slack settings
 slackAPIToken = process.env.HUBOT_SLACK_TOKEN
@@ -39,7 +40,7 @@ slackAPIMessageURL = "#{slackAPIBaseURL}?token=#{slackAPIToken}"
 slackIntroMessages = [
   "Aye aye Capt'n, here aaaaaare the previews:"
   "Yes milord..."
-  "HEY! HEY! HEY! LISTEN! PREVIEWS! WATCH OUT!"
+  "HEY! LISTEN! HEY! WATCH OUT! :navi:"
   "Prepare for unforseen consequences:"
   "IT'S DANGEROUS TO GO ALONE. TAKE THIS!"
   "Sorry, your preview is in another castle..."
