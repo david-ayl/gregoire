@@ -16,8 +16,8 @@
 
 phantom = require('phantom')
 
-USER_AGENT_STRING = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3)
-AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2650.0 Safari/537.36'
+USER_AGENT_STRING = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
 GOOGLE_SEARCH_BASE_URL = 'https://www.google.com/search'
 
 generateResponse = (robot, res, prefix = '') ->
