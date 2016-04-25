@@ -16,8 +16,7 @@
 
 phantom = require('phantom')
 
-USER_AGENT_STRING = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)
-AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+USER_AGENT_STRING = process.env.HUBOT_IMAGE_USER_AGENT
 GOOGLE_SEARCH_BASE_URL = 'https://www.google.com/search'
 
 generateResponse = (robot, res, prefix = '') ->
@@ -31,8 +30,9 @@ generateResponse = (robot, res, prefix = '') ->
           if status == 'success'
             page.evaluate(() ->
               elements = document.querySelectorAll('div#isr_mc div.ivg-i a')
-              element = elements[Math.floor(Math.random() * elements.length)]
-              ret = undefined
+              index = Math.floor(Math.random() * elements.length)
+              element = elements[index]
+              ret = null
               if element
                 matches = element.getAttribute('href').match(/imgurl=(.*?)&/)
                 if matches != null
