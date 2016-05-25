@@ -18,5 +18,5 @@ variantes = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /hodor/i, (msg) ->
+  robot.hear /hodor|hold the door|hold door|:door:/i, (msg) ->
     msg.send variantes[Math.floor(Math.random() * variantes.length)]
