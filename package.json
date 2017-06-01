@@ -6,7 +6,6 @@
   "description": "A simple helpful robot for your Company",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "firebase": "^2.4.2",
     "hubot": "^2.18.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-dogeme": "1.0.0",
